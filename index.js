@@ -6,7 +6,9 @@ for(var i=0;i<document.querySelectorAll(".drum").length;i++){
     function handleclick()
     {
         var buttoninner=this.innerHTML;
+        //Button Press
         makesound(buttoninner);
+        buttonAnimation(buttoninner);
     }
     
 }
@@ -15,7 +17,9 @@ for(var i=0;i<document.querySelectorAll(".drum").length;i++){
 
 document.addEventListener("keypress",function(event)
 {
-    makesound(event.key)
+    //Key Press
+    makesound(event.key);
+    buttonAnimation(event.key);
 })
 
 function makesound(key)
@@ -53,4 +57,15 @@ function makesound(key)
         default:
             console.log("buttoninner");
     }
+}
+
+//Button Press Animation
+function buttonAnimation(key)
+{
+    var activebutton=document.querySelector("." + key);
+    activebutton.classList.add("pressed");
+
+    setTimeout(function(){
+        activebutton.classList.remove("pressed");
+    },50)
 }
